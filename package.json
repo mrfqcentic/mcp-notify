@@ -1,0 +1,55 @@
+{
+  "name": "@mrfqcentic/mcp-notify",
+  "version": "0.2.0",
+  "description": "Minimal MIT-licensed MCP server that plays a local notification sound and shows a system banner when an AI agent finishes a task",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "mcp-notify": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "assets",
+    "sounds"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "notification",
+    "sound",
+    "alert",
+    "agent",
+    "task-complete"
+  ],
+  "license": "MIT",
+  "author": "Mehdi Roshanfekr",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrfqcentic/mcp-notify.git"
+  },
+  "mcpName": "io.github.mrfqcentic/mcp-notify",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "npm run build && tsx test/e2e.ts",
+    "generate-sound": "node scripts/generate-default-sound.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}
