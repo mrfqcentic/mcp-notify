@@ -1,7 +1,7 @@
 {
   "name": "@mrfqcentic/mcp-notify",
-  "version": "0.2.0",
-  "description": "Minimal MIT-licensed MCP server that plays a local notification sound and shows a system banner when an AI agent finishes a task",
+  "version": "0.2.1",
+  "description": "Minimal MCP server that plays a sound and shows a system banner when an AI agent finishes a task",
   "type": "module",
   "main": "dist/index.js",
   "bin": {

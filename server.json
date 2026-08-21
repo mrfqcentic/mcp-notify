@@ -1,17 +1,17 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.mrfqcentic/mcp-notify",
-  "description": "Minimal MCP server that plays a notification sound and shows a system banner when an AI agent finishes a task",
+  "description": "Minimal MCP server that plays a sound and shows a system banner when an AI agent finishes a task",
   "repository": {
     "url": "https://github.com/mrfqcentic/mcp-notify",
     "source": "github"
   },
-  "version": "0.2.0",
+  "version": "0.2.1",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@mrfqcentic/mcp-notify",
-      "version": "0.2.0",
+      "version": "0.2.1",
       "transport": {
         "type": "stdio"
       }
