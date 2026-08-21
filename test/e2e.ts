@@ -72,8 +72,16 @@ try {
   rmSync(tmp, { recursive: true, force: true });
 }
 
+// The MCP SDK spawns the server with a sanitized default env (no CI), so
+// propagate it explicitly. Strip NOTIFY_SOUND so the runner's environment
+// can't silently change which default sound the assertions expect.
+const childEnv: Record<string, string> = {};
+for (const [k, v] of Object.entries(process.env)) {
+  if (v !== undefined && k !== "NOTIFY_SOUND") childEnv[k] = v;
+}
+
 // --- e2e: main client ---
-const transport = new StdioClientTransport({ command: process.execPath, args: [entry] });
+const transport = new StdioClientTransport({ command: process.execPath, args: [entry], env: childEnv });
 const client = new Client({ name: "e2e-test", version: "0.0.0" });
 await withTimeout(client.connect(transport), "connect");
 
@@ -166,7 +174,7 @@ const override = "/tmp/notify-sound-override.wav";
 const transport2 = new StdioClientTransport({
   command: process.execPath,
   args: [entry],
-  env: { ...process.env, NOTIFY_SOUND: override },
+  env: { ...childEnv, NOTIFY_SOUND: override },
 });
 const client2 = new Client({ name: "e2e-test-env", version: "0.0.0" });
 await withTimeout(client2.connect(transport2), "connect-env");
